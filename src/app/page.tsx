@@ -1,14 +1,7 @@
 // HomePage.tsx
 
-
 import React from "react";
-import {
-  Box,
-  Typography,
-  IconButton,
-  Avatar,
-  Button,
-} from "@mui/material";
+import { Box, Typography, IconButton, Avatar, Button } from "@mui/material";
 // import Grid from "@mui/material/Grid";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -16,12 +9,11 @@ import SearchIcon from "@mui/icons-material/Search";
 // import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import PersonIcon from "@mui/icons-material/Person";
 // import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
 
 const today = new Date();
 const tomorrow = new Date(today);
@@ -32,7 +24,7 @@ function formatDisplayDate(date: Date) {
     day: "numeric",
     month: "long",
     year: "numeric",
-    weekday: "long"
+    weekday: "long",
   });
 }
 interface DatePaginationProps {
@@ -40,7 +32,10 @@ interface DatePaginationProps {
   onDateChange: (date: Date) => void;
 }
 
-const DatePagination: React.FC<DatePaginationProps> = ({ selectedDate, onDateChange }) => {
+const DatePagination: React.FC<DatePaginationProps> = ({
+  selectedDate,
+  onDateChange,
+}) => {
   const handlePrev = () => {
     const prev = new Date(selectedDate);
     prev.setDate(selectedDate.getDate() - 1);
@@ -54,11 +49,26 @@ const DatePagination: React.FC<DatePaginationProps> = ({ selectedDate, onDateCha
   };
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", p: 2 }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        p: 2,
+      }}
+    >
       <IconButton onClick={handlePrev}>
         <ChevronLeftIcon />
       </IconButton>
-      <Typography sx={{ mx: 2, fontSize: 18, fontWeight: 500, minWidth: 220, textAlign: "center" }}>
+      <Typography
+        sx={{
+          mx: 2,
+          fontSize: 18,
+          fontWeight: 500,
+          minWidth: 220,
+          textAlign: "center",
+        }}
+      >
         {formatDisplayDate(selectedDate)}
       </Typography>
       <IconButton onClick={handleNext}>
@@ -67,9 +77,6 @@ const DatePagination: React.FC<DatePaginationProps> = ({ selectedDate, onDateCha
     </Box>
   );
 };
-
-
-
 
 // --
 // const remindersToday = [
@@ -125,7 +132,9 @@ const DatePagination: React.FC<DatePaginationProps> = ({ selectedDate, onDateCha
 
 const HomePage: React.FC = () => {
   return (
-    <Box sx={{ bgcolor: "#fafafa", minHeight: "100vh", fontFamily: "sans-serif" }}>
+    <Box
+      sx={{ bgcolor: "#fafafa", minHeight: "100vh", fontFamily: "sans-serif" }}
+    >
       {/* Header */}
       <Box
         sx={{
@@ -159,77 +168,71 @@ const HomePage: React.FC = () => {
         </IconButton>
       </Box>
 
+      <Box sx={{ display: "flex", justifyContent: "space-between", p: 2 }}>
+        {/* Notifications */}
+        <Card sx={{ width: 600, ml: 2, mt: 2, boxShadow: 3 }}>
+          <CardContent>
+            <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+              <Typography variant="h6" sx={{ mr: 1 }}>
+                Today
+              </Typography>
+              <IconButton size="small">
+                <CalendarTodayIcon />
+              </IconButton>
+            </Box>
+            <Typography variant="body2" color="textSecondary">
+              You have no new notifications.
+            </Typography>
+          </CardContent>
+        </Card>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: 2,
+            p: 2,
+          }}
+        >
+          {/* Medicine cabinet */}
+          <Card sx={{ maxWidth: 400, height: 150, mr: 2, mt: 2, boxShadow: 3 }}>
+            <CardContent>
+              <Typography variant="h6">My Medicine Cabinet</Typography>
+              <Typography variant="body2" color="textSecondary">
+                Manage your medicines and track your health.
+              </Typography>
+            </CardContent>
+          </Card>
 
-<Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
+          {/* Medicine expiring */}
+          <Card sx={{ maxWidth: 400, height: 150, mr: 1, mt: 2, boxShadow: 3 }}>
+            <CardContent>
+              <Typography variant="h6">Medicine Expiring</Typography>
+              <Typography variant="body2" color="textSecondary">
+                You have no medicines expiring soon.
+              </Typography>
+            </CardContent>
+          </Card>
 
+          {/* Consultations */}
+          <Card sx={{ maxWidth: 400, height: 150, mr: 2, mt: 2, boxShadow: 3 }}>
+            <CardContent>
+              <Typography variant="h6">Consultations</Typography>
+              <Typography variant="body2" color="textSecondary">
+                You have no upcoming consultations.
+              </Typography>
+            </CardContent>
+          </Card>
 
-      {/* Notifications */}
-      <Card sx={{ width: 600, ml: 2, mt: 2, boxShadow: 3 }}>
-        <CardContent>
-          <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-          <Typography variant="h6" sx={{ mr: 1 }}>
-            Today
-          </Typography>
-          <IconButton size="small">
-            <CalendarTodayIcon />
-          </IconButton>
+          {/* Doctors */}
+          <Card sx={{ maxWidth: 400, height: 150, mr: 1, mt: 2, boxShadow: 3 }}>
+            <CardContent>
+              <Typography variant="h6">Doctors</Typography>
+              <Typography variant="body2" color="textSecondary">
+                Look for teleconsultations options here.
+              </Typography>
+            </CardContent>
+          </Card>
         </Box>
-          <Typography variant="body2" color="textSecondary">
-            You have no new notifications.
-          </Typography>
-        </CardContent>
-      </Card>
-        <Box sx={{display:'grid', gridTemplateColumns: "repeat(2, 1fr)", gap: 2, p: 2 }}>
-
-
-      {/* Medicine cabinet */}
-      <Card sx={{ maxWidth: 400, height: 150, mr: 2, mt: 2, boxShadow: 3 }}>
-        <CardContent>
-          <Typography variant="h6">
-            My Medicine Cabinet
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            Manage your medicines and track your health.
-          </Typography>
-        </CardContent>
-      </Card>
-
-      {/* Medicine expiring */}
-      <Card sx={{ maxWidth: 400, height: 150, mr: 1, mt: 2, boxShadow: 3 }}>
-        <CardContent>
-          <Typography variant="h6">
-            Medicine Expiring
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            You have no medicines expiring soon.
-          </Typography>
-        </CardContent>
-      </Card>
-      
-      {/* Consultations */}
-      <Card sx={{ maxWidth: 400, height: 150, mr: 2, mt: 2, boxShadow: 3 }}>
-        <CardContent>
-          <Typography variant="h6">
-            Consultations
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            You have no upcoming consultations.
-          </Typography>
-        </CardContent>
-      </Card>
-
-      {/* Doctors */}
-      <Card sx={{ maxWidth: 400, height: 150, mr: 1, mt: 2, boxShadow: 3 }}>
-        <CardContent>
-          <Typography variant="h6">
-            Doctors
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            Look for teleconsultations options here.
-          </Typography>
-        </CardContent>
-      </Card>
-      </Box>
       </Box>
 
       {/* Chatbot Button */}
@@ -265,8 +268,7 @@ const HomePage: React.FC = () => {
             color: "#888",
             mt: 0.5,
           }}
-        >
-        </Typography>
+        ></Typography>
       </Box>
 
       {/* Footer with Wavy SVG */}
@@ -314,6 +316,5 @@ const HomePage: React.FC = () => {
     </Box>
   );
 };
-
 
 export default HomePage;
