@@ -1,11 +1,11 @@
 "use client";
 import { Background } from "../../styles/pages/Login";
-import { SignIn } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 
 export default function Login() {
   return (
     <Background bg="/login-bg.png">
-      <SignIn
+      <SignUp
         appearance={{
           elements: {
             headerTitle: "text-3xl font-bold text-blue-600 text-center",
@@ -16,7 +16,8 @@ export default function Login() {
             colorPrimary: "#9e00ba",
           },
         }}
-        signUpUrl="/signup"
+        signInUrl="/login"
+        forceRedirectUrl="/signup/onboarding"
       />
     </Background>
   );
