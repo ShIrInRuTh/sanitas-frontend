@@ -12,25 +12,10 @@ import PersonIcon from "@mui/icons-material/Person";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const today = new Date();
 const tomorrow = new Date(today);
 tomorrow.setDate(tomorrow.getDate() + 1);
-
-function formatDisplayDate(date: Date) {
-  return date.toLocaleDateString(undefined, {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    weekday: "long",
-  });
-}
-interface DatePaginationProps {
-  selectedDate: Date;
-  onDateChange: (date: Date) => void;
-}
 
 // const DatePagination: React.FC<DatePaginationProps> = ({
 //   selectedDate,
