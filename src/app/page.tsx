@@ -32,51 +32,51 @@ interface DatePaginationProps {
   onDateChange: (date: Date) => void;
 }
 
-const DatePagination: React.FC<DatePaginationProps> = ({
-  selectedDate,
-  onDateChange,
-}) => {
-  const handlePrev = () => {
-    const prev = new Date(selectedDate);
-    prev.setDate(selectedDate.getDate() - 1);
-    onDateChange(prev);
-  };
+// const DatePagination: React.FC<DatePaginationProps> = ({
+//   selectedDate,
+//   onDateChange,
+// }) => {
+//   const handlePrev = () => {
+//     const prev = new Date(selectedDate);
+//     prev.setDate(selectedDate.getDate() - 1);
+//     onDateChange(prev);
+//   };
 
-  const handleNext = () => {
-    const next = new Date(selectedDate);
-    next.setDate(selectedDate.getDate() + 1);
-    onDateChange(next);
-  };
+//   const handleNext = () => {
+//     const next = new Date(selectedDate);
+//     next.setDate(selectedDate.getDate() + 1);
+//     onDateChange(next);
+//   };
 
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        p: 2,
-      }}
-    >
-      <IconButton onClick={handlePrev}>
-        <ChevronLeftIcon />
-      </IconButton>
-      <Typography
-        sx={{
-          mx: 2,
-          fontSize: 18,
-          fontWeight: 500,
-          minWidth: 220,
-          textAlign: "center",
-        }}
-      >
-        {formatDisplayDate(selectedDate)}
-      </Typography>
-      <IconButton onClick={handleNext}>
-        <ChevronRightIcon />
-      </IconButton>
-    </Box>
-  );
-};
+//   return (
+//     <Box
+//       sx={{
+//         display: "flex",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         p: 2,
+//       }}
+//     >
+//       <IconButton onClick={handlePrev}>
+//         <ChevronLeftIcon />
+//       </IconButton>
+//       <Typography
+//         sx={{
+//           mx: 2,
+//           fontSize: 18,
+//           fontWeight: 500,
+//           minWidth: 220,
+//           textAlign: "center",
+//         }}
+//       >
+//         {formatDisplayDate(selectedDate)}
+//       </Typography>
+//       <IconButton onClick={handleNext}>
+//         <ChevronRightIcon />
+//       </IconButton>
+//     </Box>
+//   );
+// };
 
 // --
 // const remindersToday = [
